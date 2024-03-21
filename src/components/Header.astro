@@ -1,0 +1,65 @@
+---
+import Logo from "./Logo.astro";
+---
+
+<header>
+  <div id="content">
+    <figure>
+      <Logo
+        title="Logo de RxJS"
+        href="./rxjs-logo.png"
+        width={250}
+        height={250}
+      />
+    </figure>
+    <div id="description">
+      <h1>Aprendiendo RxJS</h1>
+      <p>
+        Colección de ejercicios prácticos que he realizado para aprender RxJs.
+      </p>
+    </div>
+  </div>
+</header>
+
+<style>
+  header {
+    margin-top: 5rem;
+    padding: 0 1rem;
+
+    & #content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      color: #ffffff;
+
+      & h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+      }
+
+      & p {
+        text-wrap: balance;
+        font-size: 1.3rem;
+      }
+    }
+  }
+
+  @media (max-width: 750px) {
+    header {
+      & #content {
+        flex-direction: column;
+        gap: 1rem;
+
+        & h1 {
+          text-align: center;
+          font-size: 2rem;
+        }
+
+        & p {
+          text-align: center;
+        }
+      }
+    }
+  }
+</style>

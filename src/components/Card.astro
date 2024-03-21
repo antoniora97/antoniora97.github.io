@@ -1,0 +1,35 @@
+---
+interface Props {
+  title: string;
+  body: string;
+  href: string;
+}
+
+const { href, title, body } = Astro.props;
+---
+
+<a href={href}>
+  <h2>
+    {title}
+  </h2>
+  <p>
+    {body}
+  </p>
+</a>
+
+<style>
+  a {
+    display: block;
+    text-decoration: none;
+    color: #ffffff;
+
+    & p {
+      margin-top: 0.5rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+</style>

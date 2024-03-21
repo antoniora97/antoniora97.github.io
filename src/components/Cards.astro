@@ -1,0 +1,33 @@
+---
+import Card from "@/components/Card.astro";
+import { exercises } from "@cv";
+---
+
+<section>
+  <ul>
+    {
+      exercises.map((exercise) => {
+        return (
+          <li>
+            <Card href="" title={exercise.title} body={exercise.body} />
+          </li>
+        );
+      })
+    }
+  </ul>
+</section>
+
+<style>
+  section {
+    padding: 4rem 1rem;
+    display: flex;
+    justify-content: center;
+
+    & ul {
+      list-style-type: none;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 4rem;
+    }
+  }
+</style>

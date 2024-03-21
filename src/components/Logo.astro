@@ -1,0 +1,19 @@
+---
+interface Props {
+  title: string;
+  href: string;
+  width: number;
+  height: number;
+}
+
+const { title, href, width, height } = Astro.props;
+---
+
+<img src={href} alt={title} width={width} height={height} />
+
+<style>
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
