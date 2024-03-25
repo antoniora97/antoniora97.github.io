@@ -19,15 +19,27 @@ import { exercises } from "@cv";
 
 <style>
   section {
-    padding: 4rem 1rem;
+    margin: auto;
+    padding: 2rem;
     display: flex;
     justify-content: center;
 
     & ul {
       list-style-type: none;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 700px) {
+    section {
+      padding: 2rem 1rem;
+
+      & ul {
+        display: flex;
+        flex-direction: column;
+      }  
     }
   }
 </style>
