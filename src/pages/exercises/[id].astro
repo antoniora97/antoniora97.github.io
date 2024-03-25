@@ -1,0 +1,13 @@
+---
+import { exercises } from "@cv";
+
+export function getStaticPaths() {
+  return exercises.map(({ id }) => ({
+    params: { id },
+  }));
+}
+
+const id = Astro.params.id;
+---
+
+<h1>Ejercicio {id}</h1>

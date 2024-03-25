@@ -9,7 +9,7 @@ import { exercises } from "@cv";
       exercises.map((exercise) => {
         return (
           <li>
-            <Card href="" title={exercise.title} body={exercise.body} />
+            <Card href=`exercises/${exercise.id}` title={exercise.title} body={exercise.body} />
           </li>
         );
       })
