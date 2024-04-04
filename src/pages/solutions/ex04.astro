@@ -1,0 +1,73 @@
+<section>
+  <label for="input">Input</label>
+  <input id="input" type="text" />
+
+  <ul id="results"></ul>
+</section>
+
+<script>
+  import {
+    Observable,
+    debounceTime,
+    fromEvent,
+    map,
+    of,
+    switchMap,
+  } from "rxjs";
+
+  // Data
+  const words: string[] = [
+    "hola",
+    "adiós",
+    "manzana",
+    "banana",
+    "pera",
+    "uva",
+    "plátano",
+    "naranja",
+    "limón",
+    "melocotón",
+  ];
+
+  // Functions
+  function resetList(ul: HTMLUListElement) {
+    ul.innerHTML = "";
+  }
+
+  function fillList(ul: HTMLUListElement, elements: string[]) {
+    elements.forEach((element) => {
+      const li = document.createElement("li");
+      li.innerHTML = element;
+      ul.appendChild(li);
+    });
+  }
+
+  // DOM Elements
+  const input: HTMLInputElement | null = document.getElementById("input") as HTMLInputElement; // El tipo 'HTMLElement | null' no se puede asignar al tipo 'HTMLInputElement | null'.
+  const ul: HTMLUListElement = document.getElementById("results") as HTMLUListElement; // El tipo 'HTMLElement | null' no se puede asignar al tipo 'HTMLUListElement'. 
+
+  // Observables
+  const listaInicial$: Observable<string[]> = of(words);
+
+  const search$ = fromEvent(input, "input").pipe(
+    debounceTime(300),
+    map((event: Event) => (event.target as HTMLInputElement).value), // La propiedad 'value' no existe en el tipo 'EventTarget'
+    switchMap((value) => {
+      const filteredWord: string[] = words.filter((word) =>
+        word.includes(value)
+      );
+      return of(filteredWord);
+    })
+  );
+
+  // Observables' subscriptions
+  search$.subscribe((filteredWords: string[]) => {
+    resetList(ul);
+    fillList(ul, filteredWords);
+  });
+
+  listaInicial$.subscribe((words: string[]) => {
+    resetList(ul);
+    fillList(ul, words);
+  });
+</script>

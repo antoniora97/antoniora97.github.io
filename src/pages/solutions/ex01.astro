@@ -1,0 +1,14 @@
+---
+import { from, filter } from "rxjs"
+
+const observable = from([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]); // o const observable = range(1, 10)
+const observablePares = observable.pipe(filter((x) => x % 2 === 0));
+
+console.log("Observable original");
+observable.subscribe((x) => console.log(x));
+
+console.log("");
+
+console.log("Observable Pares");
+observablePares.subscribe((x) => console.log(x));
+---
