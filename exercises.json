@@ -1,37 +1,37 @@
 {
     "exercises": [
         {
-            "id": 1,
+            "id": "ex01",
             "title": "Filtrar números pares.",
             "body": "Crea un observable que emita una secuencia de números del 1 al 10 y utiliza el operador filter para emitir solo los números pares."
         },
         {
-            "id": 2,
+            "id": "ex02",
             "title": "Duplicar números.",
             "body": "Crea un observable que emita una secuencia de números del 1 al 5 y utiliza el operador map para duplicar cada número emitido."
         }, 
         {
-            "id": 3,
+            "id": "ex03",
             "title": "Contador de clicks.",
             "body": "Crea un observable a partir de un evento de clic en un botón y utiliza el operador scan para contar el número total de clics."
         }, 
         {
-            "id": 4,
+            "id": "ex04",
             "title": "Autocompletar búsqueda.",
             "body": "Crea un observable a partir de un campo de entrada y utiliza el operador debounceTime para agregar un retraso antes de emitir el valor. Luego, utiliza el operador switchMap para realizar una solicitud HTTP a medida que el usuario escribe en el campo de búsqueda."
         },
         {
-            "id": 4,
+            "id": "ex05",
             "title": "Manejo de errores.",
             "body": "Crea un observable que intente cargar datos de un servidor utilizando una solicitud HTTP. Utiliza el operador catchError para manejar cualquier error que ocurra durante la solicitud y emita un mensaje de error en su lugar."
         },
         {
-            "id" : 5,
+            "id": "ex06",
             "title": "Fibonacci.",
             "body": "Crea un observable que genere la secuencia de Fibonacci utilizando el operador scan. Empieza con los números 0 y 1, y cada nuevo número en la secuencia es la suma de los dos números anteriores."
         },
         {
-            "id": 6,
+            "id": "ex07",
             "title": "Cuenta atrás.",
             "body": "Crea un temporizador de cuenta regresiva que emita un valor cada segundo utilizando el operador interval. Luego, utiliza el operador map para calcular el tiempo restante en segundos y mostrarlo en la interfaz de usuario."
         }
