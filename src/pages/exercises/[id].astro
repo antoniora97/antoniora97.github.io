@@ -1,5 +1,6 @@
 ---
 import { exercises } from "@cv";
+import Layout from "@/layouts/Layout.astro";
 
 export function getStaticPaths() {
   return exercises.map(({ id }) => ({
@@ -8,6 +9,36 @@ export function getStaticPaths() {
 }
 
 const id = Astro.params.id;
+const exercise = exercises.find((e) => e.id === id);
 ---
 
-<h1>Ejercicio {id}</h1>
+<Layout title="hola">
+  <section>
+    <h1>{exercise?.title}</h1>
+    <p>{exercise?.body}</p>
+    <iframe
+      src={`/exercises/${id}/index.html`}
+      width="100%"
+      title={`Solución del ejercicio`}
+    >
+    </iframe>
+  </section>
+</Layout>
+
+<style>
+  section {
+    padding: 0 1rem;
+
+    p {
+      margin: 1.5rem 0 2rem 0;
+    }
+  }
+
+  iframe {
+    border: none;
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+</style>
