@@ -1,0 +1,36 @@
+/* Estilos para el botón */
+.copy-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+/* Estilos adicionales para el bloque de código y el título */
+.code-block {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f0f0f0;
+  padding: 5px;
+  border-bottom: 1px solid #ccc;
+  border-radius: 5px 5px 0 0;
+}
+
+.code-title {
+  font-weight: bold;
+}
+
+/* Asegúrate de incluir los estilos de Prism.js para la apariencia del bloque de código */
+pre[class*="language-"] {
+  margin-top: 0;
+  margin-bottom: 0;
+}

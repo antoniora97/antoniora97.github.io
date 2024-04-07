@@ -1,0 +1,108 @@
+---
+interface Props {
+  title: string;
+  prismLanguageClass: string;
+  code: string;
+}
+
+const { title, prismLanguageClass, code } = Astro.props;
+---
+
+<div class="code-block">
+  <div class="code-header">
+    <div class="code-title">{title}</div>
+    <button class="copy-button">Copy</button>
+  </div>
+  <pre
+    class={prismLanguageClass}>
+      <code id="code" class={prismLanguageClass}>{code}</code>
+    </pre>
+</div>
+
+<style>
+  .code-block {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #272822;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
+    border-radius: 5px;
+  }
+
+  .code-title {
+    font-weight: bold;
+  }
+
+  .copy-button {
+    display: inline-block;
+    width: 4rem;
+    background-image: linear-gradient(
+      108.7deg,
+      rgba(221, 22, 224, 1) 11%,
+      rgba(111, 22, 190, 1) 88.2%
+    );
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: transform 0.5s;
+  }
+
+  .copy-button.copied {
+    animation: animateButton 0.5s;
+  }
+
+  pre[class*="language-"] {
+    margin: 0;
+    padding: 0;
+    border-radius: 5px;
+  }
+
+  @keyframes animateButton {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+  }
+</style>
+
+<script>
+  import Prism from "prismjs";
+  import "prismjs/themes/prism-okaidia.css";
+
+  Prism.highlightAll();
+
+  const copyButton = document.querySelector(".copy-button");
+  copyButton?.addEventListener("click", () => {
+    const code: HTMLElement | null = document.getElementById("code") as HTMLElement;
+    const range = document.createRange();
+    range.selectNode(code);
+
+    const selection = window.getSelection();
+    selection?.removeAllRanges();
+    selection?.addRange(range);
+
+    document.execCommand("copy");
+    selection?.removeAllRanges();
+
+    copyButton.classList.add('copied')
+    copyButton.innerHTML = 'Copied';
+    setTimeout(() => {
+        copyButton.innerHTML = 'Copy'
+        copyButton.classList.remove('copied');
+    }, 500);
+  });
+</script>

@@ -1,0 +1,50 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import { exercises } from "@cv";
+
+const exercise = exercises.filter((e) => e.id === "ex02")[0];
+
+const code = `
+  import { range, map } from "rxjs";
+
+  const observable = range(1, 5);
+  const observableDuplicado = observable.pipe(map((x) => x));
+
+  console.log("Observable original");
+  observable.subscribe((x) => console.log(x));
+
+  console.log("");
+
+  console.log("Observable Duplicado");
+  observableDuplicado.subscribe((x) => console.log(x));`;
+---
+
+<Layout title="ex02">
+  <section>
+    <h1>{exercise.title}</h1>
+    <p>{exercise.body}</p>
+    <p>Resultado: en consola.</p>
+
+    <CodeBlock
+      title="JavaScript"
+      prismLanguageClass="language-js"
+      code={code}
+    />
+  </section>
+</Layout>
+
+<script>
+  import { range, map } from "rxjs";
+
+  const observable = range(1, 5);
+  const observableDuplicado = observable.pipe(map((x) => x));
+
+  console.log("Observable original");
+  observable.subscribe((x) => console.log(x));
+
+  console.log("");
+
+  console.log("Observable Duplicado");
+  observableDuplicado.subscribe((x) => console.log(x));
+</script>

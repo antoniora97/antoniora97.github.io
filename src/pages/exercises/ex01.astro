@@ -1,0 +1,50 @@
+---
+import CodeBlock from "@/components/CodeBlock.astro";
+import Layout from "@/layouts/Layout.astro";
+import { exercises } from "@cv";
+
+const exercise = exercises.filter((e) => e.id === "ex01")[0];
+
+const code = `
+  import { filter, range } from "rxjs";
+
+  const observable = range(1, 10);
+  const observablePares = observable.pipe(
+    filter((x) => x % 2 === 0)
+  );
+
+  console.log("Observable original");
+  observable.subscribe((x) => console.log(x));
+
+  console.log("Observable Pares");
+  observablePares.subscribe((x) => console.log(x));`;
+---
+
+<Layout title="ex01">
+  <section>
+    <h1>{exercise.title}</h1>
+    <p>{exercise.body}</p>
+    <p>Resultado: en consola.</p>
+
+    <CodeBlock
+      title="JavaScript"
+      prismLanguageClass="language-js"
+      code={code}
+    />
+  </section>
+</Layout>
+
+<script>
+  import { filter, range } from "rxjs";
+
+  const observable = range(1, 10);
+  const observablePares = observable.pipe(filter((x) => x % 2 === 0));
+
+  console.log("Observable original");
+  observable.subscribe((x) => console.log(x));
+
+  console.log("");
+
+  console.log("Observable Pares");
+  observablePares.subscribe((x) => console.log(x));
+</script>
