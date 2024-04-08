@@ -1,0 +1,71 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import CodeBlock from "@/components/CodeBlock.astro";
+import { exercises } from "@cv";
+
+const exercise = exercises.filter((e) => e.id === "ex02")[0];
+
+const code = `
+	import { fromEvent, scan } from "rxjs";
+
+	const button = document.getElementById("myButton");
+	const counterSpan = document.getElementById("counter");
+
+	const observableClicks$ = fromEvent(button, "click");
+	const observableContadorClicks$ = observableClicks$.pipe(
+		scan((count) => count + 1, 0)
+	);
+
+	observableContadorClicks$.subscribe((x) => {
+		if (counterSpan) {
+			counterSpan.innerHTML = \`\${x}\`;
+		}
+	});`;
+---
+
+<Layout title="ex03">
+  <section class="exercise-page">
+    <div class="header">
+      <a href="/">Home</a>
+      <h1>{exercise.title}</h1>
+      <p>{exercise.body}</p>
+    </div>
+
+    <div id="solution-html">
+      <button id="myButton">Click me!</button>
+      <span id="counter">0</span>
+    </div>
+
+    <CodeBlock
+      title="JavaScript"
+      prismLanguageClass="language-js"
+      code={code}
+    />
+  </section>
+</Layout>
+
+<style>
+	#solution-html {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+	}
+</style>
+
+<script>
+  import { fromEvent, scan } from "rxjs";
+
+  const button: HTMLElement | null = document.getElementById("myButton") as HTMLElement;
+  const counterSpan = document.getElementById("counter");
+
+  const observableClicks$ = fromEvent(button, "click");
+  const observableContadorClicks$ = observableClicks$.pipe(
+    scan((count) => count + 1, 0)
+  );
+
+  observableContadorClicks$.subscribe((x) => {
+    if (counterSpan) {
+      counterSpan.innerHTML = `${x}`;
+    }
+  });
+</script>

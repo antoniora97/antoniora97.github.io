@@ -21,10 +21,16 @@ const code = `
 ---
 
 <Layout title="ex01">
-  <section>
-    <h1>{exercise.title}</h1>
-    <p>{exercise.body}</p>
-    <p>Resultado: en consola.</p>
+  <section class="exercise-page">
+    <div class="header">
+      <a href="/">Home</a>
+      <h1>{exercise.title}</h1>
+      <p>{exercise.body}</p>
+    </div>
+
+    <div class="solution-html">
+      <p>Resultado: en consola.</p>
+    </div>
 
     <CodeBlock
       title="JavaScript"
