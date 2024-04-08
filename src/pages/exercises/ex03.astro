@@ -6,21 +6,21 @@ import { exercises } from "@cv";
 const exercise = exercises.filter((e) => e.id === "ex02")[0];
 
 const code = `
-	import { fromEvent, scan } from "rxjs";
+  import { fromEvent, scan } from "rxjs";
 
-	const button = document.getElementById("myButton");
-	const counterSpan = document.getElementById("counter");
+  const button = document.getElementById("myButton");
+  const counterSpan = document.getElementById("counter");
 
-	const observableClicks$ = fromEvent(button, "click");
-	const observableContadorClicks$ = observableClicks$.pipe(
-		scan((count) => count + 1, 0)
-	);
+  const observableClicks$ = fromEvent(button, "click");
+  const observableContadorClicks$ = observableClicks$.pipe(
+    scan((count) => count + 1, 0)
+  );
 
-	observableContadorClicks$.subscribe((x) => {
-		if (counterSpan) {
-			counterSpan.innerHTML = \`\${x}\`;
-		}
-	});`;
+  observableContadorClicks$.subscribe((x) => {
+    if (counterSpan) {
+      counterSpan.innerHTML = \`\${x}\`;
+    }
+  });`;
 ---
 
 <Layout title="ex03">
@@ -45,17 +45,19 @@ const code = `
 </Layout>
 
 <style>
-	#solution-html {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-	}
+  #solution-html {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 </style>
 
 <script>
   import { fromEvent, scan } from "rxjs";
 
-  const button: HTMLElement | null = document.getElementById("myButton") as HTMLElement;
+  const button: HTMLElement | null = document.getElementById(
+    "myButton"
+  ) as HTMLElement;
   const counterSpan = document.getElementById("counter");
 
   const observableClicks$ = fromEvent(button, "click");
